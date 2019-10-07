@@ -31,8 +31,7 @@ if __name__ == '__main__':
         data = getdata(33, s).strip()
         if not data:
             exit()
-        s.send(pub)
-        s.send(b'\n')
+        s.send(pub+b'\n')
         key = curve25519.calculateAgreement(prv, data)
         nonce = getdata(12, s)
         while True:
@@ -40,7 +39,6 @@ if __name__ == '__main__':
             cmd = input("$")
             ctxt, sig = cipher.encrypt_and_digest(cmd.encode())
             s.send(b64encode(ctxt))
-            #s.send(b64encode(cmd.encode()))
             s.send(b'\n')
             s.send(b64encode(sig))
             s.send(b'\n')

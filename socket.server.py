@@ -1,8 +1,5 @@
-import socket
-import curve25519
 import os
-from Crypto.Cipher import ChaCha20_Poly1305
-from base64 import b64decode, b64encode
+import socket
 
 PORT = 65532
 
@@ -41,31 +38,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         conn, addr = s.accept()
         print(addr)
         with conn:
-            # prv = curve25519.generatePrivateKey(os.urandom(32))
-            # pub = curve25519.generatePublicKey(prv)
-            # conn.send(pub)
-            # conn.send(b'\n')
-            # data = getdata(33, conn).strip()
-            # if data == b'':
-            #     break
-            # key = curve25519.calculateAgreement(prv, data)
-            # nonce = os.urandom(12)
-            # conn.send(nonce)
             while True:
-                # cipher = ChaCha20_Poly1305.new(key=key, nonce=nonce)
-                # ciphertext = receiveuntil(b'\n', conn)
                 data = receiveuntil(b'\n', conn)
-                # sig = getdata(25, conn).strip()
-                # data = cipher.decrypt_and_verify(b64decode(ciphertext), b64decode(sig))
                 if data == b'exit':
                     break
-                # cipher = ChaCha20_Poly1305.new(key=key, nonce=nonce)
-                # with open(data.decode(),'rb') as file:
-                print(b64decode(data).decode())
-                with open(b64decode(data).decode(), 'rb') as file:
-                    # ctxt, sig = cipher.encrypt_and_digest(file.read())
+                print(data.decode())
+                with open(data.decode(), 'rb') as file:
                     data = file.read()
-                conn.send(b64encode(data))
-                conn.send(b'\n')
-                # conn.send(b64encode(sig))
-                # conn.send(b'\n')
+                conn.send(data + b'\n')

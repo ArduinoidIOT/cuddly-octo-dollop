@@ -54,16 +54,15 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             while True:
                 cipher = ChaCha20_Poly1305.new(key=key, nonce=nonce)
                 ciphertext = receiveuntil(b'\n', conn)
-                # data = receiveuntil(b'\n', conn)
                 sig = getdata(25, conn).strip()
                 data = cipher.decrypt_and_verify(b64decode(ciphertext), b64decode(sig))
                 print(data.decode())
                 if data == b'exit':
                     break
                 cipher = ChaCha20_Poly1305.new(key=key, nonce=nonce)
-                with open(data.decode(),'rb') as file:
+                with open(data.decode(), 'rb') as file:
                     ctxt, sig = cipher.encrypt_and_digest(file.read())
-                    #data = file.read()
+                    # data = file.read()
                 conn.send(b64encode(ctxt))
                 conn.send(b'\n')
                 conn.send(b64encode(sig))
