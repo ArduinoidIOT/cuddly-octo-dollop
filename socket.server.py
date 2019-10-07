@@ -1,5 +1,6 @@
 import os
 import socket
+from base64 import b64encode
 
 PORT = 65532
 
@@ -45,4 +46,4 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 print(data.decode())
                 with open(data.decode(), 'rb') as file:
                     data = file.read()
-                conn.send(data + b'\n')
+                conn.send(b64encode(data) + b'\n')

@@ -43,18 +43,20 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         with conn:
             prv = curve25519.generatePrivateKey(os.urandom(32))
             pub = curve25519.generatePublicKey(prv)
-            conn.send(pub)
-            conn.send(b'\n')
+            # print(b'Public key:' + pub)
+            conn.send(pub + b'\n')
             data = getdata(33, conn).strip()
             if data == b'':
                 break
             key = curve25519.calculateAgreement(prv, data)
             nonce = os.urandom(12)
+            # print(b'Nonce:' + nonce)
             conn.send(nonce)
             while True:
                 cipher = ChaCha20_Poly1305.new(key=key, nonce=nonce)
                 ciphertext = receiveuntil(b'\n', conn)
                 sig = getdata(25, conn).strip()
+                # print("Ciphertext:" + ciphertext.decode() + "\nSignature:" + sig.decode())
                 data = cipher.decrypt_and_verify(b64decode(ciphertext), b64decode(sig))
                 print(data.decode())
                 if data == b'exit':
@@ -63,7 +65,5 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 with open(data.decode(), 'rb') as file:
                     ctxt, sig = cipher.encrypt_and_digest(file.read())
                     # data = file.read()
-                conn.send(b64encode(ctxt))
-                conn.send(b'\n')
-                conn.send(b64encode(sig))
-                conn.send(b'\n')
+                conn.send(b64encode(ctxt) + b'\n')
+                conn.send(b64encode(sig) + b'\n')

@@ -1,5 +1,5 @@
 import socket
-
+from base64 import b64decode
 
 def getdata(byt, sock):
     targ = b''
@@ -26,4 +26,4 @@ if __name__ == '__main__':
             cmd = input("$")
             s.send(cmd.encode() + b'\n')
             ciphertext = receiveuntil(b'\n', s)
-            print(ciphertext.decode())
+            print(b64decode(ciphertext).decode())
