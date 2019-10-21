@@ -139,7 +139,7 @@ form {
 
 .todo-list {
   --spacer: 2rem;
-
+  /*display:flex;*/
   grid-area: active;
   background: var(--clr-light);
   color: var(--clr-dark);
@@ -164,6 +164,7 @@ form {
 
 .todo-body {
   padding: var(--spacer);
+  /*display:flex;*/
   position: relative;
 }
 
