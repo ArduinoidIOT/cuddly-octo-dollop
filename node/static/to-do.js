@@ -80,19 +80,19 @@ form.on("submit",function (event) {
     xhr.open('POST','/todolists/create/'+listname.val(),true)
     xhr.send()
 })
-delete_list.on("click", function() {
-var xhr = new XMLHttpRequest()
+function list_delete_net() {
+  var xhr = new XMLHttpRequest()
   xhr.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-       // Typical action to be performed when the document is ready:
-          curlist.remove();
-          lists =$('.list-name');
-          lists.first().attr('id','active-list')
-          curlist = lists.first();
-          updateDeleteButton();
-           $('#list-title').text(curlist.text())
-      }
+    if (this.readyState == 4 && this.status == 200) {
+     curlist.remove();
+     lists =$('.list-name');
+     lists.first().attr('id','active-list')
+     curlist = lists.first();
+     updateDeleteButton();
+     $('#list-title').text(curlist.text())
+    }
   }
-    xhr.open('POST','/todolists/delete/'+curlist.text(),true)
-    xhr.send()
-})
+  xhr.open('POST','/todolists/delete/'+curlist.text(),true)
+  xhr.send()
+}
+delete_list.on("click", list_delete_net )
