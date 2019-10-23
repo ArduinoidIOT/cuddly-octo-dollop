@@ -19,7 +19,6 @@ body {
   font-size: 1.5rem;
   background-color: var(--clr-primary);
   color: var(--clr-light);
-
   display: grid;
   grid:
      "header header header header" auto
@@ -139,9 +138,9 @@ form {
 
 .todo-list {
   --spacer: 2rem;
-  /*display:flex;*/
+
   grid-area: active;
-  /**/
+
   color: var(--clr-dark);
 
 }
@@ -165,7 +164,7 @@ form {
 
 .todo-body {
   padding: var(--spacer);
-  /*display:flex;*/
+
   position: relative;
   background: var(--clr-light);
 }
@@ -251,13 +250,9 @@ form {
 
 .delete-stuff {
   display: flex;
-  background-color: none;
   justify-content: space-evenly;
-  /*position: relative;*/
   padding-top: 1rem;
   width: 100%;
-  /*left: 0;
-  bottom: -35px;*/
   color: var(--clr-light);
 }
 
