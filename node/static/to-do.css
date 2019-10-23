@@ -143,6 +143,7 @@ form {
   grid-area: active;
   background: var(--clr-light);
   color: var(--clr-dark);
+  resize:none;
 }
 
 .todo-header {
@@ -151,6 +152,7 @@ form {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  resize:none;
 }
 
 #list-title {
@@ -164,8 +166,10 @@ form {
 
 .todo-body {
   padding: var(--spacer);
+  padding-bottom:0;
   /*display:flex;*/
   position: relative;
+  resize:none;
 }
 
 [type="checkbox"] {
@@ -250,10 +254,11 @@ form {
 .delete-stuff {
   display: flex;
   justify-content: space-evenly;
-  position: absolute;
+  /*position: relative;*/
+  padding-top: var(--spacer);
   width: 100%;
-  left: 0;
-  bottom: -35px;
+  /*left: 0;
+  bottom: -35px;*/
   color: var(--clr-light);
 }
 
