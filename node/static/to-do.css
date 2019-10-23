@@ -143,7 +143,7 @@ form {
   grid-area: active;
   background: var(--clr-light);
   color: var(--clr-dark);
-  resize:none;
+
 }
 
 .todo-header {
@@ -152,7 +152,6 @@ form {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  resize:none;
 }
 
 #list-title {
@@ -169,7 +168,6 @@ form {
   padding-bottom:0;
   /*display:flex;*/
   position: relative;
-  resize:none;
 }
 
 [type="checkbox"] {
