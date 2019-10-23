@@ -1,10 +1,12 @@
-from flask import Flask
+from flask import Flask,redirect
 import json
 
 app = Flask(__name__)
 
 data = []
-
+@app.route('/')
+def goto():
+    return redirect('static/to-do.html',301)
 @app.route('/todolists')
 def hello_world():
     return json.dumps(data)

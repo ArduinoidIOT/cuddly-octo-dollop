@@ -141,7 +141,7 @@ form {
   --spacer: 2rem;
   /*display:flex;*/
   grid-area: active;
-  background: var(--clr-light);
+  /**/
   color: var(--clr-dark);
 
 }
@@ -165,9 +165,9 @@ form {
 
 .todo-body {
   padding: var(--spacer);
-  padding-bottom:0;
   /*display:flex;*/
   position: relative;
+  background: var(--clr-light);
 }
 
 [type="checkbox"] {
@@ -251,9 +251,10 @@ form {
 
 .delete-stuff {
   display: flex;
+  background-color: none;
   justify-content: space-evenly;
   /*position: relative;*/
-  padding-top: var(--spacer);
+  padding-top: 1rem;
   width: 100%;
   /*left: 0;
   bottom: -35px;*/
