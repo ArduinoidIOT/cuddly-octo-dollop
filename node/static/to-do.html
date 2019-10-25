@@ -4,17 +4,18 @@
       <meta charset="UTF-8"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-      <link href="fonts.css" rel="stylesheet"/>
+      <link href="/static/fonts.css" rel="stylesheet"/>
       <link rel="stylesheet" href="to-do.css"/>
       <title>My To-do</title>
   </head>
   <body>
-  <h1 id="title">Stuff I need to do</h1>
-
-  <div id="all-tasks">
+    <h1 id="title">Stuff I need to do</h1>
+    <div id="all-tasks">
       <h2 class="task-list-title">My lists</h2>
+    <div id='task-list-div'>
       <ul id="task-list">
       </ul>
+    </div>
       <div class='container'>
           <button class="btn btn-create" aria-label="create new list" id="btn-newlist" type='submit'>+</button>
           <form id='list-creator'>
@@ -32,71 +33,12 @@
 
       <div class="todo-body">
           <div class="tasks">
-              <!--<div class="task">
-                  <input type="checkbox" id="task-1"/>
-                  <label for="task-1">
-                      <span class="custom-checkbox"></span>
-                      record todo list video
-                  </label>
-              </div>
-
-              <div class="task">
-                  <input type="checkbox" id="task-2"/>
-                  <label for="task-2">
-                      <span class="custom-checkbox"></span>
-                      a second task
-                  </label>
-              </div>
-
-              <div class="task">
-                  <input type="checkbox" id="task-3"/>
-                  <label for="task-3">
-                      <span class="custom-checkbox"></span>
-                      a third task
-                  </label>
-              </div>
-              <div class="task">
-                  <input type="checkbox" id="task-4"/>
-                  <label for="task-4">
-                      <span class="custom-checkbox"></span>
-                      <span>a third task</span>
-                  </label>
-              </div>-->
-              <div class="task">
-                  <input type="checkbox"/>
-                <label>
-                      <span class="custom-checkbox"></span>
-                      record todo list video
-              </label>
-
-              </div>
-
-              <div class="task">
-                  <input type="checkbox"/>
-                  <label>
-                      <span class="custom-checkbox"></span>
-                      a second task
-                  </label>
-              </div>
-
-              <div class="task">
-                  <input type="checkbox" id="task-7"/>
-                  <label for="task-7">
-                      <span class="custom-checkbox"></span>
-                      a third task
-                  </label>
-              </div>
-              <div class="task">
-                  <input type="checkbox" id="task-8"/>
-                  <label for="task-8">
-                      <span class="custom-checkbox"></span>
-                      <span>a third task</span>
-                  </label>
-              </div>
-            <div class="new-task-creator">
-              <button class="btn btn-create" aria-label="create new task" id='btn-newtask'>+</button>
-              <input type="text" class="new new-task" placeholder="new task name" aria-label="new task name"/>
           </div>
+        <div class="new-task-creator container">
+              <button class="btn btn-create" aria-label="create new task" id='btn-newtask'>+</button>
+          <form id='task-creator'>
+              <input type="text" class="new new-task" id='new-task' placeholder="new task name" aria-label="new task name"/>
+          </form>
           </div>
       </div>
     <div class="delete-stuff">

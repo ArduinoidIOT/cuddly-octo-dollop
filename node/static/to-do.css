@@ -262,9 +262,9 @@ form {
 .container {
   display:flex;
 }
-.container #btn-cct {
+#btn-cct {
   padding-right:10px;
 }
-.container #btn-dl {
+#btn-dl {
   padding-left:10px;
 }

@@ -1,33 +1,71 @@
-from flask import Flask,redirect
+from flask import Flask, redirect, request
 import json
 
 app = Flask(__name__)
 
-data = []
+database = {'YouTube':[]}
+
+
 @app.route('/')
 def goto():
-    return redirect('static/to-do.html',301)
-@app.route('/todolists')
+    return redirect('static/to-do.html', 301)
+
+
+@app.route('/todolists/', methods=['GET', 'POST', 'DELETE'])
 def hello_world():
-    return json.dumps(data)
-    print(data)
+    data = request.data.decode()
+    if request.method == 'POST':
+        if data not in database.keys():
+            database[data] = []
+    if request.method == 'DELETE':
+        if data in database.keys():
+            del database[data]
+    return json.dumps(list(database.keys()))
 
-@app.route('/todolists/delete/<name>',methods=['POST'])
-def deleteTodo(name):
-    if name not in data:
-        pass
-    else:
-        data.remove(name)
-    return ""
 
-@app.route('/todolists/create/<name>',methods=['POST'])
-def createTodo(name):
-    if name not in data:
-        data.append(name)
-        print(data)
-        return "Success"
-    print(data)
-    return "Fail"
+@app.route('/todolists/<name>/tasks', methods=['GET', 'POST'])
+def gettodotilts(name):
+    data = request.data.decode()
+    if request.method == 'POST':
+        data = json.loads(data)
+        if data['text'] != '':
+            database[name].append(data)
+    return json.dumps(database[name])
+
+
+@app.route('/todolists/<name>/cct', methods=['POST'])
+def cct(name):
+    data = []
+    for i in database[name]:
+        if not i['checked']:
+            data.append(i)
+    database[name] = data
+    return json.dumps(database[name])
+
+
+@app.route('/todolists/<name>/tasks/count/')
+def gettaskcount(name):
+    nonchecked = 0
+    for i in database[name]:
+        if not i['checked']:
+            nonchecked += 1
+    return json.dumps({'total': len(database[name]), 'todo': nonchecked})
+
+
+@app.route('/todolists/<name>/<id>/toggleChecked/', methods=['POST'])
+def toggleChecked(name, id):
+    stat = 200
+    try:
+        id = int(id)
+        database[name][id]['checked'] = not database[name][id]['checked']
+    except ValueError:
+        stat = 400
+    nonchecked = 0
+    for i in database[name]:
+        if not i['checked']:
+            nonchecked += 1
+    return json.dumps({'total': len(database[name]), 'todo': nonchecked}),stat
+
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(port=3000, debug=True)
