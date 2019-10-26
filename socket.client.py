@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import socket
 from base64 import b64decode
 
