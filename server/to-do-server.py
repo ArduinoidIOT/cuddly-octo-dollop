@@ -4,7 +4,7 @@ import json
 
 app = Flask(__name__)
 
-database = {"defaultUser": {'YouTube':[]}}
+database = {"defaultUser": {'YouTube': []}}
 
 
 @app.route('/')
@@ -65,7 +65,7 @@ def toggleChecked(name, id):
     for i in database['defaultUser'][name]:
         if not i['checked']:
             nonchecked += 1
-    return json.dumps({'total': len(database['defaultUser'][name]), 'todo': nonchecked}),stat
+    return json.dumps({'total': len(database['defaultUser'][name]), 'todo': nonchecked}), stat
 
 
 if __name__ == '__main__':
