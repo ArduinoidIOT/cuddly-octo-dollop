@@ -19,7 +19,7 @@ def hello_world():
         if data not in database['defaultUser'].keys() and len(data) < 12:
             database['defaultUser'][data] = []
     if request.method == 'DELETE':
-        if data in database['defaultUser'].keys():
+        if data in database['defaultUser'].keys() and len(database['defaultUser'].keys()) > 1:
             del database['defaultUser'][data]
     return json.dumps(list(database['defaultUser'].keys()))
 
