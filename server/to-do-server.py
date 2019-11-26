@@ -1,10 +1,10 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 from flask import Flask, redirect, request
 import json
 
 app = Flask(__name__)
 
-database = {'YouTube': []}
+database = {}
 
 
 @app.route('/')
@@ -16,7 +16,7 @@ def goto():
 def hello_world():
     data = request.data.decode()
     if request.method == 'POST':
-        if data not in database.keys() and len(data) < 12:
+        if data not in database.keys() and len(data) < 12 and data != '':
             database[data] = []
     if request.method == 'DELETE':
         if data in database.keys() and len(database.keys()) > 1:

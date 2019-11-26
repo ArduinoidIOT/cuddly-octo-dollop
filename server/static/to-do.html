@@ -4,7 +4,7 @@
       <meta charset="UTF-8"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-      <link href="/static/fonts.css" rel="stylesheet"/>
+      <link href="fonts.css" rel="stylesheet"/>
       <link rel="stylesheet" href="to-do.css"/>
       <title>My To-do</title>
   </head>
@@ -12,10 +12,10 @@
     <h1 id="title">Stuff I need to do</h1>
     <div id="all-tasks">
       <h2 class="task-list-title">My lists</h2>
-    <div id='task-list-div'>
-      <ul id="task-list">
-      </ul>
-    </div>
+      <div id='task-list-div'>
+        <ul id="task-list">
+        </ul>
+      </div>
       <div class='container'>
           <button class="btn btn-create" aria-label="create new list" id="btn-newlist" type='submit'>+</button>
           <form id='list-creator'>
@@ -23,28 +23,28 @@
                      maxlength="11"/>
           </form>
       </div>
-  </div>
+    </div>
 
-  <div class="todo-list">
+  <div id="todo-list" class='hideable'>
       <div class="todo-header">
-          <h2 id="list-title">YouTube</h2>
-          <p class="task-count">3 tasks remaining</p>
+          <h2 id="list-title" class='hideable'></h2>
+          <p class="task-count hideable"></p>
       </div>
 
-      <div class="todo-body">
-          <div class="tasks">
+      <div class="todo-body hideable">
+          <div class="tasks hideable">
           </div>
-        <div class="new-task-creator container">
-              <button class="btn btn-create" aria-label="create new task" id='btn-newtask'>+</button>
-          <form id='task-creator'>
-              <input type="text" class="new new-task" id='new-task' placeholder="new task name" aria-label="new task name"/>
+        <div class="new-task-creator container hideable">
+              <button class="btn btn-create hideable" aria-label="create new task" id='btn-newtask'>+</button>
+          <form id='task-creator' class='hideable'>
+              <input type="text" class="new new-task hideable" id='new-task' placeholder="new task name" aria-label="new task name"/>
           </form>
           </div>
       </div>
-    <div class="delete-stuff">
-        <div class='container'>
-            <button class="btn btn-delete" id='btn-cct'>Clear completed tasks</button>
-            <button class="btn btn-delete" id='btn-dl'>Delete list</button>
+    <div class="delete-stuff hideable" >
+        <div class="container hideable">
+            <button class="btn btn-delete hideable" id='btn-cct'>Clear completed tasks</button>
+            <button class="btn btn-delete hideable" id='btn-dl'>Delete list</button>
         </div>
     </div>
   </div>

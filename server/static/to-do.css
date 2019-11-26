@@ -136,7 +136,7 @@ form {
   font-weight: 700;
 }
 
-.todo-list {
+#todo-list {
   --spacer: 2rem;
 
   grid-area: active;

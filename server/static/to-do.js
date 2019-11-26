@@ -31,19 +31,24 @@ function load_list(listname) {
 function update_todo_lists(text) {
   $('.list-name').remove()
   arr = JSON.parse(text)
+  if (text='[]') {
+  $('#todo-list').hide()
+  return 1
+  }
+  $('#todo-list').show()
+  console.log(arr)
+  console.log(text)
  for (var i = 0;i < arr.length; i++) {
     createList(arr[i])
  }
- tskcounter = 0;
-  $('.task').remove();
-  load_list($('#active-list').text())
+  load_list($('#active-list').text()  )
 }
 var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
        // Typical action to be performed when the document is ready:
        update_todo_lists(xhr.responseText);
-       }
+    }
 };
 xhr.open('GET',"/todolists/")
 xhr.send();
